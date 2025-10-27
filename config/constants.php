@@ -17,6 +17,15 @@ define('JOONWEB_REDIRECT_URI', $_ENV['JOONWEB_REDIRECT_URI'] ?? '');
 define('JOONWEB_API_VERSION', $_ENV['JOONWEB_API_VERSION'] ?? '2024-01');
 define('JOONWEB_API_SCOPES', $_ENV['JOONWEB_API_SCOPES'] ?? 'read_products');
 
+
+// DATABASE Configuration
+define('DB_MODULE', $_ENV['DB'] ?? 'sqllite');
+define('DB_HOST', $_ENV['DB_HOST'] ?? 'localhost');
+define('DB_NAME',  $_ENV['DB_NAME'] ?? '');
+define('DB_USER',  $_ENV['DB_USER'] ?? '');
+define('DB_PASSWORD',  $_ENV['DB_PASSWORD'] ?? '');
+
+
 // App Settings
 define('PRODUCTS_PER_PAGE', $_ENV['PRODUCTS_PER_PAGE'] ?? 20);
 
