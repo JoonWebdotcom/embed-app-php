@@ -1,0 +1,26 @@
+# ----------------------------------------------------
+# .htaccess for PHP 8.3 (EasyApache 4)
+# Applies to this subdomain and all subdirectories
+# ----------------------------------------------------
+
+# Ensure mod_mime is loaded
+<IfModule mime_module>
+    AddHandler application/x-httpd-php83 .php
+</IfModule>
+
+# Optional: Default index file
+DirectoryIndex index.php index.html
+
+# Recommended security and performance tweaks
+Options -Indexes
+RewriteEngine On
+
+# Example rewrite rules (optional)
+# Redirect all traffic to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# You can add your custom rules below (if needed)
+# e.g., RewriteRule ^blog/(.*)$ blog.php?post=$1 [L,QSA]
+
+# End of file

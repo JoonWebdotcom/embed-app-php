@@ -1,0 +1,36 @@
+[24-Oct-2025 13:30:59 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:30:59 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:30:59 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:30:59 UTC] PHP Deprecated:  Increment on non-alphanumeric string is deprecated in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 26
+[24-Oct-2025 13:30:59 UTC] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php:30
+Stack trace:
+#0 /home/u636894263/domains/gamerzity.com/public_html/jambed-app/embedded.php(129): include()
+#1 {main}
+  thrown in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:20 UTC] PHP Warning:  Array to string conversion in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:20 UTC] PHP Warning:  Array to string conversion in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:20 UTC] PHP Warning:  Array to string conversion in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:31:50 UTC] PHP Warning:  Undefined array key "r" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
+[24-Oct-2025 13:32:18 UTC] PHP Warning:  Undefined array key "name" in /home/u636894263/domains/gamerzity.com/public_html/jambed-app/views/embedded/products.php on line 30
