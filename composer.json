@@ -1,19 +1,19 @@
 {
-    "name": "joonweb/sample-embed-app",
-    "description": "Sample Embed App for JoonWeb to help developer clone it and customize it according to thier needs, Its an official JoonWeb Embed App SDK and system in PHP 8+",
-    "type": "project",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Joonweb\\EmbedApp\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "JoonWeb",
-            "homepage": "https://www.joonweb.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {}
+  "name": "aisensy",
+  "description": "JoonWeb App - Aisensy",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Joonweb\\EmbedApp\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "JoonWeb",
+      "homepage": "https://www.joonweb.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {}
 }

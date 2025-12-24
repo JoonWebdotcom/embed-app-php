@@ -19,13 +19,7 @@
             <?php endif; ?>
         </p>
         
-        <div style="margin-top: 10px; font-size: 12px;">
-            <a href="?page=settings" style="color: #007cba; text-decoration: none; margin: 0 10px;">Settings</a>
-            <a href="/auth/logout.php" style="color: #007cba; text-decoration: none; margin: 0 10px;">Logout</a>
-            <?php if (isset($_SESSION['joonweb_user'])): ?>
-                <span style="margin: 0 10px;">User: <?php echo htmlspecialchars($_SESSION['joonweb_user']); ?></span>
-            <?php endif; ?>
-        </div>
+  
         
         <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e1e3e5; font-size: 12px;">
             <p>Powered by JoonWeb App Platform</p>

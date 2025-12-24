@@ -1,4 +1,5 @@
 <?php
+namespace JoonWeb\EmbedApp;
 class JoonWebAPI {
     private $access_token;
     private $site_domain;
@@ -44,7 +45,6 @@ class JoonWebAPI {
             return json_decode($response, true);
         }
         
-        throw new Exception("Token exchange failed: HTTP {$http_code}");
     }
     
     public function api($endpoint, $method = 'GET', $data = []) {
@@ -114,6 +114,67 @@ class JoonWebAPI {
     
     public function createProduct($product_data) {
         return $this->api('/products.json', 'POST', ['product' => $product_data]);
+    }
+
+    public function subscribeToWebhooks($jw_event, $address) {
+        try {
+            $webhook_url = $address;
+            $payload = [
+                'webhook' => [
+                    'event' => $jw_event,
+                    'address' => $webhook_url,
+                    'format' => 'json'
+                ]
+            ];
+            error_log("Subscribing to webhook for event {$jw_event} at address {$webhook_url}");
+            $result = $this->api('/webhooks.json', 'POST', $payload);
+            error_log("Webhook subscription payload: " . print_r($payload, true));
+            return $result;
+        } catch (Exception $e) {
+            error_log("Failed to subscribe to webhook: " . $e->getMessage());
+            return false;
+        }
+    }
+    public function updateWebhookSubscription($old_jw_event, $new_jw_event, $address, $status) {
+        // Fetch existing webhooks to find the ID
+        $webhooks = $this->api('/webhooks.json');
+        foreach ($webhooks['webhooks'] as $webhook) {
+            if ($webhook['address'] === $address && $webhook['event'] === $old_jw_event) {
+                $webhookid = $webhook['id'];
+                break;
+            }
+
+        }
+        if(isset($webhookid)){
+            $payload = [
+                'webhook' => [
+                    'event' => $new_jw_event,
+                    'address' => $address,
+                    'format' => 'json',
+                    'status' => $status == 'active' ? 1 : 0
+                ]
+            ];
+            error_log("Updating webhook ID {$webhookid} to event {$new_jw_event} with status {$status}");
+            error_log(print_r($payload, true));
+            $result = $this->api("/webhooks/{$webhookid}.json", 'PUT', $payload);
+            error_log("Webhook update result: " . print_r($result, true));
+            return $result;
+        }else{
+            error_log("Webhook ID not found for address {$address} and event {$old_jw_event}");
+            return false; // Webhook ID not found
+        }
+        return false; // Webhook not found
+    }
+
+    public function unsubscribeFromWebhooks($jw_event, $address) {
+        // Fetch existing webhooks to find the ID
+        $webhooks = $this->api('/webhooks.json');
+        foreach ($webhooks['webhooks'] as $webhook) {
+            if ($webhook['address'] === $address && $webhook['event'] === $jw_event) {
+                return $this->api("/webhooks/{$webhook['id']}.json", 'DELETE');
+            }
+        }
+        return false; // Webhook not found
     }
     
     public function updateProduct($product_id, $product_data) {
