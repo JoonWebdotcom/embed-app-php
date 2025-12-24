@@ -1,22 +1,5 @@
 <?php
 // Get data for dashboard
-try {
-    $stats = $fun->getDashboardStats($_SESSION['site_domain']);
-    $recent_automations = $fun->getAutomations($_SESSION['site_domain'], 1, 5);
-    $recent_events = $fun->getRecentEvents($_SESSION['site_domain'], 5);
-    $api_status = $fun->checkAPIBySite($_SESSION['site_domain']);
-} catch (Exception $e) {
-    $stats = [
-        'total_automations' => 0,
-        'active_automations' => 0,
-        'total_events' => 0,
-        'triggered_events' => 0,
-        'conversion_rate' => 0
-    ];
-    $recent_automations = ['automations' => []];
-    $recent_events = [];
-    $api_status = false;
-}
 
 $page_title = 'Dashboard';
 ob_start();
@@ -406,36 +389,8 @@ ob_start();
     <!-- Welcome Banner -->
     <div class="welcome-banner">
         <div class="welcome-content">
-            <h1>Welcome to Floating App</h1>
-            <p>Manage your whatsapp automations and track performance</p>
-
-            <a href="ProductPicker">Open Product Options</a>
-
-            <script>
-                const link = document.querySelector('a[href="ProductPicker"]');
-                link.addEventListener('click', async function(event) {
-                    event.preventDefault();
-                    // Set up default title bar
-                    if (window.joonwebApp.actions.Components) {
-                        const ProductPicker = window.joonwebApp.actions.Components.create(window.joonwebApp);
-                        const data = await ProductPicker.show('ProductPicker');
-                        console.log('Product Picker opened');
-                        console.log(data);
-                    }
-                   
-                });
-            </script>
-            
-            <div class="setup-progress">
-                <div class="progress-step <?php echo $api_status ? 'step-complete' : 'step-pending'; ?>">
-                    <span><?php echo $api_status ? '✓' : '⏳'; ?></span>
-                    <span>Setup API KEY - <?php echo $api_status ? 'Done' : 'Pending'; ?></span>
-                </div>
-                <div class="progress-step <?php echo $stats['total_automations'] > 0 ? 'step-complete' : 'step-pending'; ?>">
-                    <span><?php echo $stats['total_automations'] > 0 ? '✓' : '⏳'; ?></span>
-                    <span>Add Automations - <?php echo $stats['total_automations'] > 0 ? 'Done' : 'Pending'; ?></span>
-                </div>
-            </div>
+            <h1>Welcome to Sample App</h1>
+            <p>Develop your sample app by editing inside views/</p>
         </div>
     </div>
 
@@ -443,22 +398,9 @@ ob_start();
     <div class="stats-grid">
         <!-- Total Automations -->
         <div class="stat-card featured">
-            <div class="stat-number"><?php echo $stats['total_automations']; ?></div>
-            <div class="stat-label">Total Automations</div>
+            <div class="stat-number">0</div>
+            <div class="stat-label">Total Products</div>
 
-        </div>
-
-        <!-- Active Automations -->
-        <div class="stat-card">
-            <div class="stat-number"><?php echo $stats['active_automations']; ?></div>
-            <div class="stat-label">Active Automations</div>
-          
-        </div>
-
-        <!-- Triggered Events -->
-        <div class="stat-card">
-            <div class="stat-number"><?php echo number_format($stats['triggered_events']); ?></div>
-            <div class="stat-label">Successful Triggers</div>
         </div>
     </div>
 
@@ -467,36 +409,12 @@ ob_start();
         <!-- Recent Automations -->
         <div class="dashboard-card">
             <div class="card-header">
-                <h3>Recent Automations</h3>
-                <a href="./?page=automations" class="view-all">View All</a>
+                <h3>Your Sample Data</h3>
+                <a href="#" class="view-all">View All</a>
             </div>
             <div class="card-content">
                 <div class="automation-list">
-                    <?php if (!empty($recent_automations['automations'])): ?>
-                        <?php foreach ($recent_automations['automations'] as $automation): ?>
-                            <div class="automation-item">
-                                <div class="automation-icon"><svg  height="28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.06152 12C5.55362 8.05369 8.92001 5 12.9996 5C17.4179 5 20.9996 8.58172 20.9996 13C20.9996 17.4183 17.4179 21 12.9996 21H8M13 13V9M11 3H15M3 15H8M5 18H10" stroke="#779d44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></div>
-                                <div class="automation-info">
-                                    <div class="automation-name"><?php echo htmlspecialchars($automation['name'] ?? 'Unnamed Automation'); ?></div>
-                                    <div class="automation-meta">
-                                        <?php echo htmlspecialchars($automation['joonweb_event'] ?? 'No event'); ?> • 
-                                        Created <?php echo date('M j, Y', strtotime($automation['created_at'] ?? 'now')); ?>
-                                    </div>
-                                </div>
-                                <div class="automation-status status-<?php echo $automation['status'] ?? 'draft'; ?>">
-                                    <?php echo ucfirst($automation['status'] ?? 'draft'); ?>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <div class="empty-state">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                                <path d="M10.3246 4.31731C10.751 2.5609 13.249 2.5609 13.6754 4.31731C13.9508 5.45193 15.2507 5.99038 16.2478 5.38285C17.7913 4.44239 19.5576 6.2087 18.6172 7.75218C18.0096 8.74925 18.5481 10.0492 19.6827 10.3246C21.4391 10.751 21.4391 13.249 19.6827 13.6754C18.5481 13.9508 18.0096 15.2507 18.6172 16.2478C19.5576 17.7913 17.7913 19.5576 16.2478 18.6172C15.2507 18.0096 13.9508 18.5481 13.6754 19.6827C13.249 21.4391 10.751 21.4391 10.3246 19.6827C10.0492 18.5481 8.74926 18.0096 7.75219 18.6172C6.2087 19.5576 4.44239 17.7913 5.38285 16.2478C5.99038 15.2507 5.45193 13.9508 4.31731 13.6754C2.5609 13.249 2.5609 10.751 4.31731 10.3246C5.45193 10.0492 5.99037 8.74926 5.38285 7.75218C4.44239 6.2087 6.2087 4.44239 7.75219 5.38285C8.74926 5.99037 10.0492 5.45193 10.3246 4.31731Z"/>
-                                <path d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"/>
-                            </svg>
-                            <p>No automations yet. Create your first one to get started!</p>
-                        </div>
-                    <?php endif; ?>
+                    
                 </div>
             </div>
         </div>
@@ -504,113 +422,25 @@ ob_start();
         <!-- Recent Events -->
         <div class="dashboard-card">
             <div class="card-header">
-                <h3>Recent Events</h3>
+                <h3>Recent Webhooks Calls</h3>
             </div>
             <div class="card-content">
                 <div class="event-list">
-                    <?php if (!empty($recent_events)): ?>
-                        <?php foreach ($recent_events as $event): ?>
-                            <div class="event-item">
-                                <div class="event-icon">
-                                    <?php 
-                                    switch($event['status']) {
-                                        case 'success': echo '✅'; break;
-                                        case 'processing': echo '⏳'; break;
-                                        case 'failed': echo '❌'; break;
-                                        default: echo '📝';
-                                    }
-                                    ?>
-                                </div>
-                                <div class="event-info">
-                                    <div class="event-name"><?php echo htmlspecialchars($event['automation_name'] ?? 'Unknown Automation'); ?></div>
-                                    <div class="event-meta"><?php echo htmlspecialchars($event['event_type'] ?? 'Unknown Event'); ?></div>
-                                    <div class="event-time"><?php echo date('M j, g:i A', strtotime($event['triggered_at'])); ?></div>
-                                </div>
-                                <div class="event-status status-<?php echo $event['status'] ?? 'processing'; ?>">
-                                    <?php echo ucfirst($event['status'] ?? 'processing'); ?>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
                         <div class="empty-state">
                             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                             </svg>
                             <p>No events triggered yet</p>
                         </div>
-                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Quick Actions -->
-    <div class="quick-actions">
-        <a href="./?page=automation&auto=new" class="action-card">
-            <div class="action-icon">➕</div>
-            <div class="action-title">Create Automation</div>
-            <div class="action-description">Build a new automation workflow</div>
-        </a>
-        
-        <a href="./?page=settings" class="action-card">
-            <div class="action-icon">⚙️</div>
-            <div class="action-title">Settings</div>
-            <div class="action-description">Configure your API keys</div>
-        </a>
-      
-    </div>
 </div>
-
-<script>
-// Real-time stats updates
-function updateStats() {
-    fetch('./api/dashboard_stats.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Update stat numbers
-                document.querySelectorAll('.stat-number')[0].textContent = data.stats.total_automations;
-                document.querySelectorAll('.stat-number')[1].textContent = data.stats.active_automations;
-                document.querySelectorAll('.stat-number')[2].textContent = data.stats.triggered_events.toLocaleString();
-                
-                // Update progress steps
-                const automationStep = document.querySelectorAll('.progress-step')[1];
-                const eventStep = document.querySelectorAll('.progress-step')[2];
-                
-                if (data.stats.total_automations > 0) {
-                    automationStep.className = 'progress-step step-complete';
-                    automationStep.innerHTML = '<span>✅</span><span>Add Automations - Done</span>';
-                }
-                
-                if (data.stats.triggered_events > 0) {
-                    eventStep.className = 'progress-step step-complete';
-                }
-            }
-        })
-        .catch(error => console.error('Error updating stats:', error));
-}
-
-// Update stats every 30 seconds
-setInterval(updateStats, 30000);
-
-// Add some animations
-document.addEventListener('DOMContentLoaded', function() {
-    // Animate stat cards on load
-    const statCards = document.querySelectorAll('.stat-card');
-    statCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            card.style.transition = 'all 0.5s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-});
-</script>
 
 <?php
 $content = ob_get_clean();
 include 'layout.php';
+
 ?>
