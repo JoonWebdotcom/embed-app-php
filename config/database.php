@@ -1,4 +1,6 @@
 <?php
+namespace JoonWeb\EmbedApp;
+use PDO;
 require_once __DIR__ . '/constants.php';
 if(!defined('DB_MODULE')){ exit('CONSTANTS MISSING'); }
 
