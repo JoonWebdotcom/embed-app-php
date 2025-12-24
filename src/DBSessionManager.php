@@ -4,6 +4,7 @@ namespace JoonWeb\EmbedApp;
 class SessionManager {
     protected $db;
     protected $isMySQL;
+    protected $check;
     
     public function __construct() {
         $this->db = (new Database())->connect();
@@ -245,4 +246,5 @@ class SessionManager {
         }
     }
 }
+
 ?>
