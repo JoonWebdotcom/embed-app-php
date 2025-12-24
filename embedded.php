@@ -123,9 +123,6 @@ if (!in_array($page, $valid_pages)) {
 header("Content-Security-Policy: frame-ancestors https://*.joonweb.com");
 header("X-Frame-Options: ALLOW-FROM https://accounts.joonweb.com");
 
-// Started Development of App::
-require_once __DIR__ .'/src/functions.php';
-$fun = new Fun();
 
 // Load the appropriate view
 $view_file = "views/embedded/{$page}.php";
@@ -133,4 +130,5 @@ if (file_exists($view_file)) {
     include $view_file;
 } else {
     include 'views/embedded/dashboard.php';
+
 }
