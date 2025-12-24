@@ -1,8 +1,10 @@
 <?php
+namespace JoonWeb\EmbedApp;
 require_once '../config/constants.php';
 require_once '../src/JoonWebAPI.php';
 require_once '../src/DBSessionManager.php';
 require_once __DIR__ . '/../config/database.php';
+
 
 $session = new SessionManager();
 $api = new JoonWebAPI();
@@ -27,6 +29,7 @@ try {
     // Exchange code for access token
     $token_data = $api->exchangeCodeForToken($_GET['code'], $_GET['site']);
     
+    
     // Start session AND store in database
     $session->startSession($_GET['site'], $token_data);
     
@@ -43,15 +46,14 @@ try {
         'site_name' => $site_info['site']['name'],
         'email' => $site_info['site']['email']
     ]);
-
+    $site_domain = $_GET['site'];
     // Redirect back to JoonWeb embed URL instead of your embedded.php
-    $embed_url = buildJoonWebEmbedUrl($site_domain);
+    $app_slug = $_GET['app_slug'] ?? JOONWEB_CLIENT_ID;
+    $embed_url = buildJoonWebEmbedUrl($site_domain, $app_slug);
     header("Location: " . $embed_url);
     exit;
     
 } catch (Exception $e) {
-    error_log("OAuth callback error: " . $e->getMessage());
-    
     // Track failed installation
     if (isset($_GET['site'])) {
         $session->trackAnalytics($_GET['site'], 'installation_failed', [
@@ -62,13 +64,11 @@ try {
     die('Installation failed. Please try again.');
 }
 
-function buildJoonWebEmbedUrl($site_domain) {
+function buildJoonWebEmbedUrl($site_domain, $app_slug) {
     // This should be the URL where JoonWeb will embed your app
-    // You need to get this from JoonWeb documentation or developer portal
     $base_url = "https://accounts.joonweb.com/site/";
-    $base_url = $base_url . '?sitehash=' . ($_GET['site_hash'] ?? '') . '&apps&jambed-app';
+    $base_url = $base_url . '?sitehash=' . ($_GET['site_hash'] ?? '') . '&apps&'. urlencode($app_slug);
   
-    
     return $base_url;
 }
 ?>
