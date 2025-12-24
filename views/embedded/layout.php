@@ -57,15 +57,9 @@
     
     <div class="app-container">
             <?php 
-                $apidata = $fun->checkAPIBySite($session->getSiteDomain());
-                include 'components/header.php';
-                // Check if is Authenticated or Not
                
-                if (!$apidata) {
-                    // Not Authenticated - Show Setup Page
-                    include_once 'setup.php';
-                    
-                }
+                include 'components/header.php';
+        
 
             ?>
         <?php echo $content; ?>
@@ -74,4 +68,5 @@
     <?php include 'components/footer.php'; ?>
 
 </body>
+
 </html>
